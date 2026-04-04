@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Galih Eka Putra – Global Technology Leader</title>
+  <meta name="description" content="Galih Eka Putra – Global Technical Support Manager with 18+ years in enterprise IT, AI identity platforms, and cybersecurity. Based in Indonesia, serving APAC. Pinnacle Award 2026." />
+  <meta property="og:title" content="Galih Eka Putra – Global Technology Leader" />
+  <meta property="og:description" content="Senior technology executive with 18+ years spanning AI fintech, e-commerce, digital payments, and enterprise software. Pinnacle Award 2026 recipient." />
+  <meta property="og:type" content="profile" />
+  <style>
+    :root {
+      --bg:         #0a0f1e;
+      --surface:    #0f1628;
+      --card:       #131d35;
+      --border:     rgba(255,255,255,0.07);
+      --accent:     #00c6ff;
+      --accent2:    #7b5ea7;
+      --blue:       #1e4bd8;
+      --gold:       #f0a500;
+      --text:       #e8eaf0;
+      --text-muted: #8b95b0;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; line-height: 1.6; }
+    a { color: inherit; text-decoration: none; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(10,15,30,0.9); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px; height: 60px;
+    }
+    .nav-logo { font-weight: 800; font-size: 1.1rem; color: #fff; }
+    .nav-links { display: flex; gap: 28px; }
+    .nav-links a { font-size: 0.85rem; color: var(--text-muted); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--accent); }
+    .hamburger { display: none; background: none; border: none; cursor: pointer; color: var(--text); font-size: 1.4rem; }
+    .mobile-nav { display: none; position: fixed; top: 60px; left: 0; right: 0; background: var(--surface); border-bottom: 1px solid var(--border); padding: 20px; z-index: 99; flex-direction: column; gap: 16px; }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav-link { font-size: 0.95rem; color: var(--text-muted); padding: 6px 0; }
+
+    /* LAYOUT */
+    .section-full { width: 100%; }
+    .section { max-width: 1100px; margin: 0 auto; padding: 80px 40px; }
+    .section-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+    .section-title { font-size: 2rem; font-weight: 800; color: #fff; margin-bottom: 48px; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh; display: flex; align-items: center;
+      background: linear-gradient(135deg, #0a0f1e 0%, #0d1530 50%, #0a0f1e 100%);
+      padding: 100px 40px 60px; position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 60% at 70% 50%, rgba(0,198,255,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; gap: 64px; width: 100%; position: relative; }
+    .hero-content { flex: 1; }
+    .hero-eyebrow { font-size: 0.75rem; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+    .hero-name { font-size: clamp(2.8rem, 5vw, 4.2rem); font-weight: 900; color: #fff; line-height: 1.1; margin-bottom: 16px; }
+    .hero-title { font-size: 1.05rem; color: var(--text-muted); margin-bottom: 24px; }
+    .hero-title span { color: var(--accent); }
+    .hero-meta { display: flex; align-items: center; gap: 16px; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 28px; flex-wrap: wrap; }
+    .hero-meta svg { flex-shrink: 0; }
+    .hero-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 36px; }
+    .badge { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: 20px; font-size: 0.78rem; font-weight: 600; }
+    .badge-gold   { background: rgba(240,165,0,0.12);  border: 1px solid rgba(240,165,0,0.35);  color: var(--gold); }
+    .badge-blue   { background: rgba(0,198,255,0.08);  border: 1px solid rgba(0,198,255,0.25);  color: var(--accent); }
+    .badge-purple { background: rgba(123,94,167,0.12); border: 1px solid rgba(123,94,167,0.35); color: #a78bfa; }
+    .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px; padding: 13px 28px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #fff;
+      border-radius: 8px; font-weight: 700; font-size: 0.9rem; transition: opacity 0.2s, transform 0.2s;
+    }
+    .btn-primary:hover { opacity: 0.88; transform: scale(1.02); }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 8px; padding: 13px 28px;
+      border: 1px solid var(--accent); color: var(--accent);
+      border-radius: 8px; font-weight: 700; font-size: 0.9rem; transition: background 0.2s, transform 0.2s;
+    }
+    .btn-outline:hover { background: rgba(0,198,255,0.08); transform: scale(1.02); }
+    .hero-visual { flex-shrink: 0; position: relative; width: 220px; height: 220px; }
+    .hero-ring {
+      position: absolute; inset: -12px; border-radius: 50%;
+      border: 2px solid transparent;
+      background: linear-gradient(135deg, var(--accent), var(--accent2)) border-box;
+      -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: destination-out; mask-composite: exclude;
+      animation: spin 8s linear infinite;
+    }
+    .hero-avatar {
+      width: 220px; height: 220px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue), var(--accent2));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 5rem; font-weight: 800; color: #fff;
+      position: relative; z-index: 1; overflow: hidden;
+      box-shadow: 0 0 0 4px rgba(0,198,255,0.2), 0 0 60px rgba(0,198,255,0.15);
+    }
+    .hero-avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ABOUT */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+    .about-text { font-size: 1rem; color: var(--text-muted); line-height: 1.8; }
+    .about-text p + p { margin-top: 16px; }
+    .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .stat-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 24px; text-align: center; }
+    .stat-num { font-size: 2rem; font-weight: 900; color: var(--accent); }
+    .stat-label { font-size: 0.8rem; color: var(--text-muted); margin-top: 4px; }
+
+    /* EXPERIENCE */
+    .timeline { position: relative; }
+    .timeline::before { content: ''; position: absolute; left: 16px; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--accent), var(--accent2)); opacity: 0.3; }
+    .timeline-item { position: relative; padding-left: 52px; margin-bottom: 32px; }
+    .timeline-dot { position: absolute; left: 8px; top: 24px; width: 18px; height: 18px; border-radius: 50%; background: var(--card); border: 2px solid var(--accent); z-index: 1; }
+    .job-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 28px 32px; transition: border-color 0.2s, box-shadow 0.2s; }
+    .job-card:hover { border-color: rgba(0,198,255,0.3); box-shadow: 0 4px 24px rgba(0,198,255,0.06); }
+    .job-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 4px; flex-wrap: wrap; }
+    .job-title { font-weight: 700; color: #fff; font-size: 1rem; }
+    .job-period { font-size: 0.78rem; color: var(--accent); font-weight: 600; white-space: nowrap; }
+    .job-company { font-size: 0.88rem; font-weight: 600; color: var(--text-muted); margin-bottom: 2px; }
+    .job-location { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 12px; }
+    .job-desc { font-size: 0.88rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 12px; }
+    .job-section-title { font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin: 14px 0 8px; }
+    .job-bullets { padding-left: 18px; }
+    .job-bullets li { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 6px; line-height: 1.6; }
+
+    /* SKILLS */
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; }
+    .skill-group { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 24px; }
+    .skill-group-title { font-size: 0.8rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .skill-tag { font-size: 0.78rem; padding: 4px 12px; border-radius: 20px; background: rgba(255,255,255,0.04); border: 1px solid var(--border); color: var(--text-muted); }
+
+    /* EDUCATION */
+    .edu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px; margin-bottom: 40px; }
+    .edu-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 28px; }
+    .edu-year { font-size: 0.78rem; color: var(--accent); font-weight: 600; margin-bottom: 8px; }
+    .edu-school { font-weight: 700; color: #fff; font-size: 1rem; margin-bottom: 4px; }
+    .edu-degree { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 8px; }
+    .edu-badge { display: inline-block; font-size: 0.75rem; padding: 3px 10px; border-radius: 10px; background: rgba(0,198,255,0.08); border: 1px solid rgba(0,198,255,0.2); color: var(--accent); margin: 2px 2px 0 0; }
+
+    /* CERTS */
+    .cert-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 12px; }
+    .cert-item { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 14px 18px; font-size: 0.85rem; color: var(--text-muted); display: flex; align-items: center; gap: 10px; }
+    .cert-item::before { content: '✓'; color: var(--accent); font-weight: 700; flex-shrink: 0; }
+
+    /* AWARDS */
+    .awards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+    .award-card { background: var(--card); border: 1px solid rgba(240,165,0,0.2); border-radius: 12px; padding: 24px; }
+    .award-icon { font-size: 1.6rem; margin-bottom: 10px; }
+    .award-title { font-weight: 700; color: var(--gold); font-size: 0.95rem; margin-bottom: 4px; }
+    .award-org { font-size: 0.8rem; color: var(--text-muted); }
+    .award-year { font-size: 0.75rem; color: var(--accent); font-weight: 600; margin-top: 4px; }
+
+    /* PROJECTS */
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+    .project-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 24px; display: flex; flex-direction: column; gap: 10px; transition: border-color 0.2s; }
+    .project-card:hover { border-color: rgba(0,198,255,0.3); }
+    .project-title { font-weight: 700; color: #fff; font-size: 0.95rem; }
+    .project-desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; flex: 1; }
+    .project-lang { font-size: 0.75rem; padding: 3px 10px; border-radius: 10px; background: rgba(123,94,167,0.12); border: 1px solid rgba(123,94,167,0.3); color: #a78bfa; width: fit-content; }
+    .project-link { font-size: 0.8rem; color: var(--accent); display: inline-flex; align-items: center; gap: 4px; }
+
+    /* TESTIMONIALS */
+    .testimonials-wrap { max-width: 780px; margin: 0 auto; }
+    .testimonial-card { display: none; background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 40px 44px; }
+    .testimonial-card.active { display: block; }
+    .testimonial-quote { font-size: 1rem; line-height: 1.85; color: var(--text-muted); font-style: italic; margin-bottom: 28px; }
+    .testimonial-quote::before { content: '\201C'; font-size: 3.5rem; color: var(--accent); line-height: 0; vertical-align: -0.65em; margin-right: 4px; }
+    .testimonial-author { display: flex; align-items: center; gap: 14px; }
+    .testimonial-avatar { width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, var(--blue), var(--accent2)); display: flex; align-items: center; justify-content: center; font-weight: 700; color: #fff; font-size: 1rem; flex-shrink: 0; }
+    .testimonial-name { font-weight: 700; color: #fff; font-size: 0.95rem; }
+    .testimonial-role { font-size: 0.8rem; color: var(--text-muted); margin-top: 2px; }
+    .testimonial-nav { display: flex; align-items: center; justify-content: center; gap: 14px; margin-top: 28px; }
+    .testimonial-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border); cursor: pointer; transition: background 0.2s, transform 0.2s; }
+    .testimonial-dot.active { background: var(--accent); transform: scale(1.35); }
+    .testimonial-btn { background: transparent; border: 1px solid var(--border); color: var(--text-muted); width: 36px; height: 36px; border-radius: 50%; cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center; transition: border-color 0.2s, color 0.2s; }
+    .testimonial-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* CONTACT */
+    .contact-section { padding: 80px 40px; text-align: center; background: linear-gradient(135deg, #0d1530, #0a0f1e); }
+    .contact-headline { font-size: 2.2rem; font-weight: 900; color: #fff; margin-bottom: 12px; }
+    .contact-sub { font-size: 1rem; color: var(--text-muted); max-width: 560px; margin: 0 auto 36px; line-height: 1.7; }
+    .contact-buttons { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; margin-bottom: 36px; }
+    .contact-social { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; }
+    .social-link { display: inline-flex; align-items: center; gap: 6px; font-size: 0.85rem; color: var(--text-muted); border: 1px solid var(--border); padding: 8px 18px; border-radius: 8px; transition: border-color 0.2s, color 0.2s; }
+    .social-link:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* FOOTER */
+    footer { padding: 28px 40px; text-align: center; border-top: 1px solid var(--border); font-size: 0.82rem; color: var(--text-muted); }
+
+    /* FADE IN */
+    .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.3s; }
+
+    /* BACK TO TOP */
+    #back-to-top { position: fixed; bottom: 32px; right: 32px; z-index: 50; width: 44px; height: 44px; border-radius: 50%; background: var(--accent); color: #000; border: none; cursor: pointer; font-size: 1.2rem; display: none; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(0,198,255,0.3); }
+    #back-to-top.visible { display: flex; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .hero-inner { flex-direction: column-reverse; gap: 36px; text-align: center; }
+      .hero-cta, .hero-badges, .hero-meta { justify-content: center; }
+      .about-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .hamburger { display: block; }
+    }
+    @media (max-width: 600px) {
+      .section { padding: 60px 20px; }
+      .hero { padding: 100px 20px 60px; }
+      .contact-section { padding: 60px 20px; }
+      .job-card { padding: 20px; }
+      .testimonial-card { padding: 28px 20px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .fade-in { opacity: 1; transform: none; }
+      .hero-ring { animation: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Galih Eka Putra</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#testimonials">Recommendations</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <button class="hamburger" id="hamburger-btn" aria-label="Menu">&#9776;</button>
+</nav>
+<div class="mobile-nav" id="mobile-menu">
+  <a class="mobile-nav-link" href="#about">About</a>
+  <a class="mobile-nav-link" href="#experience">Experience</a>
+  <a class="mobile-nav-link" href="#skills">Skills</a>
+  <a class="mobile-nav-link" href="#projects">Projects</a>
+  <a class="mobile-nav-link" href="#testimonials">Recommendations</a>
+  <a class="mobile-nav-link" href="#contact">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <p class="hero-eyebrow fade-in">Global Technology Leader</p>
+      <h1 class="hero-name fade-in delay-1">Galih Eka Putra</h1>
+      <p class="hero-title fade-in delay-1">
+        Global Technical Support Manager &nbsp;·&nbsp;
+        <span>Customer Success Leader</span> &nbsp;·&nbsp;
+        IT Security &amp; AI Identity Platforms
+      </p>
+      <div class="hero-meta fade-in delay-2">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Bogor, West Java, Indonesia
+        &nbsp;·&nbsp;
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+        <a href="https://linkedin.com/in/galih-eka-putra-73379127/" target="_blank" rel="noopener">linkedin.com/in/galih-eka-putra</a>
+      </div>
+      <div class="hero-badges fade-in delay-2">
+        <span class="badge badge-gold">&#127942; Pinnacle Award – Role Model 2026</span>
+        <span class="badge badge-blue">ISO 27001 / PCI DSS Certified</span>
+        <span class="badge badge-blue"><span id="years-exp"></span>+ Years Experience</span>
+        <span class="badge badge-purple">CCSM Level 2</span>
+      </div>
+      <div class="hero-cta fade-in delay-3">
+        <a href="cv.pdf" download class="btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download CV
+        </a>
+        <a href="#projects" class="btn-outline">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          View Projects
+        </a>
+      </div>
+    </div>
+    <div class="hero-visual fade-in delay-2">
+      <div class="hero-ring"></div>
+      <div class="hero-avatar">
+        <img src="photo.jpg" alt="Galih Eka Putra" onerror="this.style.display='none';this.parentNode.innerHTML='G';" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<div class="section-full" style="background: var(--surface);">
+  <div class="section" id="about">
+    <p class="section-label">About Me</p>
+    <h2 class="section-title">Professional Summary</h2>
+    <div class="about-grid">
+      <div class="about-text fade-in">
+        <p>Currently serving as <strong style="color:#fff">Global Technical Support Manager at ADVANCE.AI</strong>, a leading AI-powered identity verification company, overseeing 24/7 post-sales technical operations for eKYC, biometric authentication, anti-fraud, and AML platforms deployed at major banks and fintech institutions across APAC.</p>
+        <p>Senior technology executive with <strong style="color:#fff"><span id="years-exp-about"></span>+ years</strong> of progressive leadership across enterprise IT support, customer success, and cybersecurity — spanning global AI fintech, e-commerce, digital payments, and enterprise software.</p>
+        <p>Recognised with the <strong style="color:var(--gold)">Pinnacle Award – Professional Role Model 2026</strong> by ADVANCE.AI. Certified in ISO 27001/27701, PCI DSS, NSICCS, NIST, and CCSM Level 2. Public speaker on AI's impact on workforce and tech careers.</p>
+      </div>
+      <div class="about-stats fade-in delay-1">
+        <div class="stat-card">
+          <div class="stat-num"><span id="years-exp-stat"></span>+</div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">99.7%</div>
+          <div class="stat-label">SLA Adherence</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">$4.5M</div>
+          <div class="stat-label">Upsell Opportunities</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">96%+</div>
+          <div class="stat-label">CSAT Score</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EXPERIENCE -->
+<div class="section-full">
+  <div class="section" id="experience">
+    <p class="section-label">Career History</p>
+    <h2 class="section-title">Work Experience</h2>
+    <div class="timeline">
+
+      <div class="timeline-item fade-in">
+        <div class="timeline-dot"></div>
+        <div class="job-card">
+          <div class="job-header">
+            <div class="job-title">Global Technical Support Manager</div>
+            <div class="job-period">Sep 2020 – Present</div>
+          </div>
+          <div class="job-company">ADVANCE.AI</div>
+          <div class="job-location">Indonesia · APAC-wide</div>
+          <div class="job-desc">Singapore-headquartered AI company specialising in digital identity, fraud prevention, and risk management. Leads the entire post-sales technical operations function managing a distributed team of engineers and CSMs responsible for 24/7 SaaS and on-premises support at mission-critical availability levels.</div>
+          <div class="job-section-title">Service Delivery &amp; SLA Performance</div>
+          <ul class="job-bullets">
+            <li>Redesigned end-to-end SLA framework, elevating SLA adherence from 92% to 99.7% through process standardisation, automated monitoring pipelines, and tiered escalation protocols.</li>
+            <li>Reduced average incident MTTR by 42% — from 12 hours to 7 hours — by re-engineering triage workflows and building a centralised knowledge base.</li>
+            <li>Established global partner coordination framework, ensuring timely execution of 200+ service orders annually and reducing deployment delays by 52%.</li>
+          </ul>
+          <div class="job-section-title">Customer Success &amp; Revenue Impact</div>
+          <ul class="job-bullets">
+            <li>Drove $4.5M in upsell and cross-sell opportunities by embedding customer success principles into technical support touchpoints.</li>
+            <li>Increased enterprise client retention rate by 28% through structured success planning and proactive health monitoring.</li>
+            <li>Reduced client time-to-value by 38% by redesigning the post-sales onboarding journey with outcome-based milestones.</li>
+            <li>Lowered churn risk for top-tier accounts by 21% through early-warning detection models and executive-level relationship cadences.</li>
+          </ul>
+          <div class="job-section-title">Escalation &amp; Critical Incident Management</div>
+          <ul class="job-bullets">
+            <li>Global escalation leader for all P1/P2 incidents — managing 120+ high-severity situations annually while maintaining CSAT scores above 96%.</li>
+            <li>Built and institutionalised a Critical Incident Management (CIM) playbook now the operational standard across all APAC deployments.</li>
+          </ul>
+          <div class="job-section-title">Technology &amp; Governance</div>
+          <ul class="job-bullets">
+            <li>Co-developed technology roadmaps scaling support to 20M+ annual transactions, supporting onboarding spikes of 500,000+ new users per month.</li>
+            <li>Led IT governance initiatives bringing the organisation to ISO 27001 certification readiness with full alignment to NIST CSF, PCI DSS, and ISO 27701.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item fade-in">
+        <div class="timeline-dot"></div>
+        <div class="job-card">
+          <div class="job-header">
+            <div class="job-title">Customer Success Manager</div>
+            <div class="job-period">Sep 2020 – Nov 2021</div>
+          </div>
+          <div class="job-company">ADVANCE.AI</div>
+          <div class="job-location">Indonesia · APAC-wide</div>
+          <ul class="job-bullets">
+            <li>Maintained deep customer communication cadences to build trust, identify growth opportunities, and strengthen long-term relationships with enterprise clients.</li>
+            <li>Designed and implemented customer success strategies and best practices to drive adoption and reduce churn across the APAC portfolio.</li>
+            <li>Analysed customer journey touchpoints to proactively identify support needs and align internal resources to client outcomes.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item fade-in">
+        <div class="timeline-dot"></div>
+        <div class="job-card">
+          <div class="job-header">
+            <div class="job-title">Business Security Manager</div>
+            <div class="job-period">Jun 2020 – Aug 2020</div>
+          </div>
+          <div class="job-company">Bukalapak</div>
+          <div class="job-location">Jakarta, Indonesia</div>
+          <div class="job-desc">One of Indonesia's largest e-commerce platforms. Brought in to assess and mitigate business unit-level technology security risks during a critical period of platform scaling.</div>
+          <ul class="job-bullets">
+            <li>Conducted comprehensive technology and business security risk assessments across multiple business units, identifying exposure areas and proposing prioritised mitigation strategies.</li>
+            <li>Primary liaison between business units and the centralised Information Security division, translating technical security requirements into business-understandable guidance.</li>
+            <li>Spearheaded security awareness programmes and embedded secure coding standards within engineering teams.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item fade-in">
+        <div class="timeline-dot"></div>
+        <div class="job-card">
+          <div class="job-header">
+            <div class="job-title">Head of Technical Support</div>
+            <div class="job-period">Jan 2020 – May 2020</div>
+          </div>
+          <div class="job-company">DANA Indonesia</div>
+          <div class="job-location">Indonesia</div>
+          <div class="job-desc">Indonesia's leading digital wallet and payment infrastructure provider, processing millions of daily transactions across consumer, merchant, and B2B channels.</div>
+          <ul class="job-bullets">
+            <li>Took ownership of all key account technical inquiries, maintaining SLA commitments for enterprise merchant and financial institution partners.</li>
+            <li>Synthesised recurring merchant and partner pain points into actionable product improvement proposals.</li>
+            <li>Coordinated cross-functional incident resolution across engineering, operations, and compliance teams.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item fade-in">
+        <div class="timeline-dot"></div>
+        <div class="job-card">
+          <div class="job-header">
+            <div class="job-title">Technical Account Manager</div>
+            <div class="job-period">Mar 2018 – Dec 2019</div>
+          </div>
+          <div class="job-company">DANA Indonesia</div>
+          <div class="job-location">Indonesia</div>
+          <ul class="job-bullets">
+            <li>Managed end-to-end technical account relationships with key enterprise partners and payment network clients, ensuring SLA adherence and long-term satisfaction.</li>
+            <li>Served as trusted advisor bridging client requirements with internal product and engineering capabilities.</li>
+            <li>Led account reviews, managed escalations, and tracked open items to closure for strategic accounts.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item fade-in">
+        <div class="timeline-dot"></div>
+        <div class="job-card">
+          <div class="job-header">
+            <div class="job-title">Chief Operations Officer</div>
+            <div class="job-period">Jan 2018 – Dec 2018</div>
+          </div>
+          <div class="job-company">Star Share</div>
+          <div class="job-location">Semarang, Central Java, Indonesia</div>
+          <ul class="job-bullets">
+            <li>Designed and implemented end-to-end business operations framework, establishing operational policies, reporting structures, and KPI systems.</li>
+            <li>Oversaw cross-functional executive teams ensuring cohesive delivery across product, sales, and operations.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item fade-in">
+        <div class="timeline-dot"></div>
+        <div class="job-card">
+          <div class="job-header">
+            <div class="job-title">Technical Account Support</div>
+            <div class="job-period">Oct 2015 – Mar 2018</div>
+          </div>
+          <div class="job-company">Microsoft</div>
+          <div class="job-location">Indonesia · Premier Support Division</div>
+          <div class="job-desc">Premier Support division serving Microsoft's highest-value enterprise customers — predominantly Financial Services, Banking, and Oil &amp; Gas clients in Indonesia.</div>
+          <ul class="job-bullets">
+            <li>Designated Indonesia Cybersecurity Champion — developed an initiative to convert customer security feedback into structured, actionable product improvement data.</li>
+            <li>On-site and remote critical situation manager for premier banking and oil &amp; gas clients, leading real-time incident response.</li>
+            <li>Provided trusted advisory services on Windows Server/Azure architecture, Microsoft System Center deployments, and enterprise security compliance.</li>
+            <li>Recognised with the Social Selling Champion Award and Cyber Security Champion Award by Microsoft Indonesia (2017).</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item fade-in">
+        <div class="timeline-dot"></div>
+        <div class="job-card">
+          <div class="job-header">
+            <div class="job-title">Software Consultant – Banking Division</div>
+            <div class="job-period">Nov 2013 – Oct 2015</div>
+          </div>
+          <div class="job-company">Diebold Nixdorf (formerly Wincor Nixdorf)</div>
+          <div class="job-location">Jakarta, Indonesia</div>
+          <div class="job-desc">Global leader in ATM hardware and software solutions. Delivered professional services to Indonesian banking institutions specialising in ATM software development, terminal security, and payment standard compliance.</div>
+          <ul class="job-bullets">
+            <li>Delivered end-to-end software consulting for ATM banking platforms across Indonesia, Singapore, Malaysia, Thailand, and the Philippines.</li>
+            <li>Served as certified Terminal Security Engineer (TS IP/AP/HDE), conducting security validation and penetration testing for ATM hardware and software.</li>
+            <li>Acted as certified compliance tester for both NSICCS and PCI DSS, ensuring payment infrastructure readiness for national regulatory requirements.</li>
+            <li>Recognised with the Extra Miles Award (2014) for outstanding contribution to project delivery and client satisfaction.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item fade-in">
+        <div class="timeline-dot"></div>
+        <div class="job-card">
+          <div class="job-header">
+            <div class="job-title">System Implementer</div>
+            <div class="job-period">Dec 2012 – Oct 2013</div>
+          </div>
+          <div class="job-company">PT. Mastersystem Infotama</div>
+          <div class="job-location">Indonesia</div>
+          <ul class="job-bullets">
+            <li>Implemented Teradata enterprise data warehouse and Microsoft SharePoint solutions for major Indonesian banking institutions.</li>
+            <li>Supported pre-sales teams by developing live demos and prototype solutions for enterprise banking reconciliation use cases.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item fade-in">
+        <div class="timeline-dot"></div>
+        <div class="job-card">
+          <div class="job-header">
+            <div class="job-title">Lab &amp; Lecturer Assistant – Information Security</div>
+            <div class="job-period">2010 – 2012</div>
+          </div>
+          <div class="job-company">Trisakti University</div>
+          <div class="job-location">Jakarta, Indonesia</div>
+          <ul class="job-bullets">
+            <li>Delivered undergraduate instruction in information security fundamentals, cryptography, and encryption systems — building the technical foundation that underpins a career in cybersecurity and compliance.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item fade-in">
+        <div class="timeline-dot"></div>
+        <div class="job-card">
+          <div class="job-header">
+            <div class="job-title">Teacher – Mathematics &amp; Physics</div>
+            <div class="job-period">Jan 2009 – Dec 2011</div>
+          </div>
+          <div class="job-company">Lembaga Bimbingan Belajar Excellent</div>
+          <div class="job-location">Jakarta, Indonesia</div>
+          <ul class="job-bullets">
+            <li>Taught mathematics and physics to secondary school students, developing strong communication and analytical explanation skills.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item fade-in">
+        <div class="timeline-dot"></div>
+        <div class="job-card">
+          <div class="job-header">
+            <div class="job-title">Desktop &amp; Web Developer</div>
+            <div class="job-period">2008 – 2012</div>
+          </div>
+          <div class="job-company">Freelance</div>
+          <div class="job-location">DKI Jakarta, Indonesia</div>
+          <ul class="job-bullets">
+            <li>Developed Geothermal Estimator plug-in for Ocean Petrel in the Schlumberger Ocean Competition.</li>
+            <li>Built and launched Katalog Software Indonesia (<a href="https://www.software.or.id" target="_blank" rel="noopener" style="color:var(--accent)">www.software.or.id</a>).</li>
+            <li>Developed personal blogs and client websites, laying the foundation for full-stack development skills.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- SKILLS -->
+<div class="section-full" style="background: var(--surface);">
+  <div class="section" id="skills">
+    <p class="section-label">Core Competencies</p>
+    <h2 class="section-title">Skills &amp; Expertise</h2>
+    <div class="skills-grid">
+      <div class="skill-group fade-in">
+        <div class="skill-group-title">Leadership &amp; Management</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Global Team Leadership</span>
+          <span class="skill-tag">Customer Success</span>
+          <span class="skill-tag">P&amp;L Management</span>
+          <span class="skill-tag">OKR / KPI Frameworks</span>
+          <span class="skill-tag">Executive Stakeholder Management</span>
+          <span class="skill-tag">Cross-functional Collaboration</span>
+        </div>
+      </div>
+      <div class="skill-group fade-in">
+        <div class="skill-group-title">Security &amp; Compliance</div>
+        <div class="skill-tags">
+          <span class="skill-tag">ISO 27001 / 27701</span>
+          <span class="skill-tag">PCI DSS</span>
+          <span class="skill-tag">NIST CSF</span>
+          <span class="skill-tag">NSICCS</span>
+          <span class="skill-tag">eKYC / AML</span>
+          <span class="skill-tag">Penetration Testing</span>
+          <span class="skill-tag">Cybersecurity Strategy</span>
+        </div>
+      </div>
+      <div class="skill-group fade-in">
+        <div class="skill-group-title">AI &amp; Identity Platforms</div>
+        <div class="skill-tags">
+          <span class="skill-tag">AI Identity Verification</span>
+          <span class="skill-tag">Biometric Authentication</span>
+          <span class="skill-tag">Fraud Detection</span>
+          <span class="skill-tag">Liveness Detection</span>
+          <span class="skill-tag">Anti-fraud Systems</span>
+          <span class="skill-tag">Digital Payments</span>
+        </div>
+      </div>
+      <div class="skill-group fade-in">
+        <div class="skill-group-title">Technical Operations</div>
+        <div class="skill-tags">
+          <span class="skill-tag">SLA / SLO Management</span>
+          <span class="skill-tag">Incident Management (ITIL)</span>
+          <span class="skill-tag">MTTR Optimisation</span>
+          <span class="skill-tag">Azure / Cloud Platforms</span>
+          <span class="skill-tag">Zendesk</span>
+          <span class="skill-tag">Microsoft SharePoint</span>
+          <span class="skill-tag">Teradata</span>
+        </div>
+      </div>
+      <div class="skill-group fade-in">
+        <div class="skill-group-title">Development</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">JavaScript</span>
+          <span class="skill-tag">HTML / CSS</span>
+          <span class="skill-tag">NDC / DDC Protocols</span>
+          <span class="skill-tag">OpenAI API</span>
+          <span class="skill-tag">SharePoint Development</span>
+        </div>
+      </div>
+      <div class="skill-group fade-in">
+        <div class="skill-group-title">Languages</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Indonesian (Native)</span>
+          <span class="skill-tag">English (Fluent)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EDUCATION -->
+<div class="section-full">
+  <div class="section" id="education">
+    <p class="section-label">Academic Background</p>
+    <h2 class="section-title">Education</h2>
+    <div class="edu-grid">
+      <div class="edu-card fade-in">
+        <div class="edu-year">2008 – 2012</div>
+        <div class="edu-school">Trisakti University</div>
+        <div class="edu-degree">Bachelor's Degree · Computer Software Engineering</div>
+        <div style="font-size:0.82rem; color:var(--text-muted); margin-bottom:10px;">GPA: 3.67 / 4.00</div>
+        <span class="edu-badge">Full Scholarship</span>
+        <span class="edu-badge">Best Graduate – Informatics Engineering 2012</span>
+      </div>
+      <div class="edu-card fade-in">
+        <div class="edu-year">2005 – 2008</div>
+        <div class="edu-school">SMAN 8 Jakarta</div>
+        <div class="edu-degree">High School Diploma · Natural Sciences</div>
+      </div>
+    </div>
+
+    <p class="section-label" style="margin-top: 48px;">Licences &amp; Certifications</p>
+    <h3 style="font-size:1.3rem; font-weight:700; color:#fff; margin-bottom:24px;">Certifications</h3>
+    <div class="cert-list">
+      <div class="cert-item fade-in">Certified Customer Success Manager (CCSM) Level 2 – SuccessHACKER</div>
+      <div class="cert-item fade-in">ACA Cloud Computing Certification – Alibaba Group (Jan 2020)</div>
+      <div class="cert-item fade-in">Certified Secure Computer User – EC-Council (Oct 2019)</div>
+      <div class="cert-item fade-in">Ant Financial Expert – Technical Operation (Aug 2019)</div>
+      <div class="cert-item fade-in">C+E University: Big Compute – Azure Solutions, Microsoft (Feb 2018)</div>
+      <div class="cert-item fade-in">Cloud Platform University: Operations Management &amp; Security – Microsoft (Dec 2016)</div>
+      <div class="cert-item fade-in">Microsoft-INSEAD: Business Strategy and Financial Acumen (Dec 2016)</div>
+      <div class="cert-item fade-in">Cloud Platform University: Selling Security &amp; Compliance – Microsoft (Jun 2016)</div>
+      <div class="cert-item fade-in">Terminal Security Engineer TS IP/AP/HDE – Diebold Nixdorf (Mar 2015)</div>
+      <div class="cert-item fade-in">Microsoft Certified Technology Specialist: Microsoft Project 2010 (Jan 2013)</div>
+    </div>
+  </div>
+</div>
+
+<!-- AWARDS -->
+<div class="section-full" style="background: var(--surface);">
+  <div class="section" id="awards">
+    <p class="section-label">Recognition</p>
+    <h2 class="section-title">Awards &amp; Honours</h2>
+    <div class="awards-grid">
+      <div class="award-card fade-in">
+        <div class="award-icon">🏆</div>
+        <div class="award-title">Pinnacle Award – Professional Role Model 2026</div>
+        <div class="award-org">ADVANCE.AI</div>
+        <div class="award-year">Jan 2026</div>
+      </div>
+      <div class="award-card fade-in">
+        <div class="award-icon">🌟</div>
+        <div class="award-title">Social Media Award</div>
+        <div class="award-org">ADVANCE.AI</div>
+        <div class="award-year">Jan 2021</div>
+      </div>
+      <div class="award-card fade-in">
+        <div class="award-icon">💼</div>
+        <div class="award-title">Social Selling Champion Award</div>
+        <div class="award-org">Microsoft Indonesia</div>
+        <div class="award-year">Oct 2017</div>
+      </div>
+      <div class="award-card fade-in">
+        <div class="award-icon">🔐</div>
+        <div class="award-title">Cyber Security Champion Award</div>
+        <div class="award-org">Microsoft Indonesia</div>
+        <div class="award-year">Apr 2017</div>
+      </div>
+      <div class="award-card fade-in">
+        <div class="award-icon">⭐</div>
+        <div class="award-title">Extra Miles Award</div>
+        <div class="award-org">Diebold Nixdorf Indonesia</div>
+        <div class="award-year">Dec 2014</div>
+      </div>
+      <div class="award-card fade-in">
+        <div class="award-icon">🎓</div>
+        <div class="award-title">Best Graduate – Informatics Engineering</div>
+        <div class="award-org">Trisakti University</div>
+        <div class="award-year">Oct 2012</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECTS -->
+<div class="section-full">
+  <div class="section" id="projects">
+    <p class="section-label">Open Source</p>
+    <h2 class="section-title">GitHub Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card fade-in">
+        <div class="project-title">zendesk-ticket-intelligence</div>
+        <div class="project-desc">Weekly Zendesk → OpenAI pipeline: automated cleaning, clustering, root-cause analysis, and executive insight reports. Turns raw support tickets into actionable intelligence.</div>
+        <div class="project-lang">Python</div>
+        <a class="project-link" href="https://github.com/galeka/zendesk-ticket-intelligence" target="_blank" rel="noopener">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          View on GitHub
+        </a>
+      </div>
+    </div>
+    <div style="margin-top:24px; text-align:center;">
+      <a href="https://github.com/galeka" target="_blank" rel="noopener" class="btn-outline">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        View All on GitHub
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<div class="section-full" style="background: var(--surface);">
+  <div class="section" id="testimonials">
+    <p class="section-label">What People Say</p>
+    <h2 class="section-title">Recommendations</h2>
+    <div class="testimonials-wrap">
+
+      <div class="testimonial-card active fade-in">
+        <p class="testimonial-quote">Galih is a true asset and a dependable team lead who consistently demonstrates initiative and a strong commitment to excellence. He took the lead in a critical project to transform our Enterprise Service Desk into a 24/7 function, a significant undertaking that required meticulous planning and execution. Galih's deep understanding of industry standards allowed him to embed best practices throughout the new operation, resulting in a significantly more resilient and effective service desk. His leadership was crucial to this success.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">ET</div>
+          <div>
+            <div class="testimonial-name">Elvin Teo, PMP</div>
+            <div class="testimonial-role">Secretary General · JCI (Junior Chamber International) · 2025</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card fade-in">
+        <p class="testimonial-quote">Galih was exceptional in leading the Tech Support team. When it is BAU, he demonstrated strong leadership and operational excellence. His team appreciates and respects him. When he is faced with escalations and emergency situations, he acted with steadiness, resourcefulness and urgency in finding resolutions. It has been a joy working alongside Galih.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">TS</div>
+          <div>
+            <div class="testimonial-name">Teng Sheng Lim</div>
+            <div class="testimonial-role">Managing Director, Asia Pacific · 2025</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card fade-in">
+        <p class="testimonial-quote">He is indeed a great leader and executor. We work together to build a great team — from selecting, onboarding, training and enabling the team. The effort was really fruitful. We have a capable team who helps the company handle its technical issues, delivering solutions for other departments and supporting the business to run smoothly. He is a very straight forward and assertive person. He can transform the plan into solid and precise action, thus making our objectives easily achieved.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">ZZ</div>
+          <div>
+            <div class="testimonial-name">Zikry Zakiyulfuadi</div>
+            <div class="testimonial-role">VP of Technical Operations · DANA Indonesia · 2020</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card fade-in">
+        <p class="testimonial-quote">I had the pleasure to work with Galih in one of my important customer engagements. Despite being new to the organization and the processes at the beginning, Galih managed to accelerate himself to quickly learn and give impact in short time. The result was customer confidence, and we were able to step up the relationship, which in turn grew the business. Galih shows his interest on emerging technology and security. When the opportunity showed up to select security champion, I have no hesitation to nominate Galih to represent the country.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">IH</div>
+          <div>
+            <div class="testimonial-name">Ian Hutomo</div>
+            <div class="testimonial-role">Product Manager, AI · Woven by Toyota · 2017</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card fade-in">
+        <p class="testimonial-quote">Galih was a dedicated team player. He was the one that continued the operations of the Service Center in Microsoft Indonesia after I moved to Service Delivery Manager role. After he took over, he kept on looking for ways to improve the Service Center operations and implemented new tools using SharePoint. He's also dedicated to help the Services team and is willing to extend a helping hand whenever necessary. When he promises something, Galih delivers.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">CW</div>
+          <div>
+            <div class="testimonial-name">Christian Wirawan</div>
+            <div class="testimonial-role">Global Head of Process · Maersk E-Commerce · 2018</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-nav">
+        <button class="testimonial-btn" id="t-prev">&#8592;</button>
+        <div class="testimonial-dot active" data-idx="0"></div>
+        <div class="testimonial-dot" data-idx="1"></div>
+        <div class="testimonial-dot" data-idx="2"></div>
+        <div class="testimonial-dot" data-idx="3"></div>
+        <div class="testimonial-dot" data-idx="4"></div>
+        <button class="testimonial-btn" id="t-next">&#8594;</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact" aria-labelledby="contact-heading">
+  <p class="section-label" style="color:var(--accent)">Get In Touch</p>
+  <h2 class="contact-headline" id="contact-heading">Let's Connect</h2>
+  <p class="contact-sub">Open to senior technical leadership, customer success, and AI/identity platform opportunities across APAC and globally. Based in Bogor, Indonesia — available for remote or hybrid roles.</p>
+  <div class="contact-buttons">
+    <a href="https://linkedin.com/in/galih-eka-putra-73379127/" target="_blank" rel="noopener" class="btn-primary">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+      Connect on LinkedIn
+    </a>
+    <a href="cv.pdf" download class="btn-outline">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Download CV
+    </a>
+  </div>
+  <div class="contact-social">
+    <a class="social-link" href="https://linkedin.com/in/galih-eka-putra-73379127/" target="_blank" rel="noopener">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+      LinkedIn
+    </a>
+    <a class="social-link" href="https://github.com/galeka" target="_blank" rel="noopener">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+      GitHub
+    </a>
+    <a class="social-link" href="cv.pdf" download>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Download CV
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p style="margin-bottom:8px"><strong style="color:#fff">Galih Eka Putra</strong> · Global Technical Support Manager</p>
+  <p>
+    <a href="https://linkedin.com/in/galih-eka-putra-73379127/" target="_blank" rel="noopener" style="color:var(--text-muted)">LinkedIn</a>
+    &nbsp;·&nbsp;
+    <a href="https://github.com/galeka" target="_blank" rel="noopener" style="color:var(--text-muted)">GitHub</a>
+    &nbsp;·&nbsp; Bogor, Indonesia
+  </p>
+</footer>
+
+<button id="back-to-top" aria-label="Back to top">&#8679;</button>
+
+<script>
+  // Hamburger menu
+  const hamburgerBtn = document.getElementById('hamburger-btn');
+  const mobileMenu   = document.getElementById('mobile-menu');
+  hamburgerBtn.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+  mobileMenu.querySelectorAll('.mobile-nav-link').forEach(l => l.addEventListener('click', () => mobileMenu.classList.remove('open')));
+
+  // Back to top
+  const backToTop = document.getElementById('back-to-top');
+  window.addEventListener('scroll', () => backToTop.classList.toggle('visible', window.scrollY > 400));
+  backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  // Fade-in on scroll
+  const fadeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); fadeObserver.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
+
+  // Testimonial carousel
+  const cards = document.querySelectorAll('.testimonial-card');
+  const dots  = document.querySelectorAll('.testimonial-dot');
+  let current = 0;
+  function showCard(idx) {
+    cards[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current = (idx + cards.length) % cards.length;
+    cards[current].classList.add('active');
+    dots[current].classList.add('active');
+  }
+  document.getElementById('t-prev').addEventListener('click', () => showCard(current - 1));
+  document.getElementById('t-next').addEventListener('click', () => showCard(current + 1));
+  dots.forEach(d => d.addEventListener('click', () => showCard(+d.dataset.idx)));
+  setInterval(() => showCard(current + 1), 6000);
+
+  // Dynamic years of experience — starts from 2008
+  const yearsExp = new Date().getFullYear() - 2008;
+  document.querySelectorAll('#years-exp, #years-exp-about, #years-exp-stat').forEach(el => {
+    el.textContent = yearsExp;
+  });
+</script>
+
+</body>
+</html>
